@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SigninActivity">
+
+        <RelativeLayout
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
+
+                <ImageView
+                    android:id="@+id/img_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icons8_android_os_144"
+                    android:layout_centerHorizontal="true"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_logo"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="monospace"
+                android:text="Android"
+                android:textColor="#43e97b"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top"
+        android:layout_marginTop="100dp">
+
+        <EditText
+            android:id="@+id/input_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:hint="Username"
+            android:textColorHint="#9000"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_username"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:hint="Password"
+            android:textColorHint="#9000"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/forgotpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_password"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:gravity="right"
+            android:text="Forgot your password ?" />
+
+        <Button
+            android:id="@+id/btn_signin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/forgotpassword"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/button_gradient"
+            android:text="Sign in"
+            android:textSize="25sp"
+            android:textColor="#fff"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_signin"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/signin_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Don't you have an account ?" />
+
+            <TextView
+                android:id="@+id/tview_signinClick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/signin_answer"
+                android:text="Click here"
+                android:textColor="#43EA7F" />
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
