@@ -42,21 +42,41 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 getInput();
-                if(cursor.getCount() == 0) {
-                    databaseUsers.addUsers(str_fullname, str_username,str_password,str_phone,str_email);
-                    Toast.makeText(SignupActivity.this, "Đăng kí thành công", Toast.LENGTH_SHORT).show();
-                    resetInput();
-                    gotoSignin();
+                if(str_fullname.isEmpty() || str_username.isEmpty() ||str_password.isEmpty() ||str_phone.isEmpty() ||str_email.isEmpty()) {
+//                    if(str_fullname.isEmpty()) {
+//                        Toast.makeText(SignupActivity.this, "Bạn chưa nhập họ tên", Toast.LENGTH_SHORT).show();
+//                    }
+//                    if(str_username.isEmpty()) {
+//                        Toast.makeText(SignupActivity.this, "Bạn chưa nhập tên đăng nhập", Toast.LENGTH_SHORT).show();
+//                    }
+//                    if(str_password.isEmpty()) {
+//                        Toast.makeText(SignupActivity.this, "Bạn chưa nhập mật khẩu", Toast.LENGTH_SHORT).show();
+//                    }
+//                    if(str_phone.isEmpty()) {
+//                        Toast.makeText(SignupActivity.this, "Bạn chưa nhập số điện thoại", Toast.LENGTH_SHORT).show();
+//                    }
+//                    if(str_email.isEmpty()) {
+//                        Toast.makeText(SignupActivity.this, "Bạn chưa nhập email", Toast.LENGTH_SHORT).show();
+//                    }
+                    Toast.makeText(SignupActivity.this, "Bạn chưa nhập đầy đru thông tin", Toast.LENGTH_SHORT).show();
                 } else {
-                    if(checkSignup(cursor, str_username)) {
-                        Toast.makeText(SignupActivity.this, "Tên đăng nhập đã tồn tại", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(SignupActivity.this, "Đăng kí thành công", Toast.LENGTH_SHORT).show();
+                    if(cursor.getCount() == 0) {
                         databaseUsers.addUsers(str_fullname, str_username,str_password,str_phone,str_email);
+                        Toast.makeText(SignupActivity.this, "Đăng kí thành công", Toast.LENGTH_SHORT).show();
                         resetInput();
                         gotoSignin();
+                    } else {
+                        if(checkSignup(cursor, str_username)) {
+                            Toast.makeText(SignupActivity.this, "Tên đăng nhập đã tồn tại", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(SignupActivity.this, "Đăng kí thành công", Toast.LENGTH_SHORT).show();
+                            databaseUsers.addUsers(str_fullname, str_username,str_password,str_phone,str_email);
+                            resetInput();
+                            gotoSignin();
+                        }
                     }
                 }
+
             }
         });
 
@@ -109,5 +129,6 @@ public class SignupActivity extends AppCompatActivity {
         edt_phone.setText("");
         edt_fullname.setText("");
     }
+
 
 }

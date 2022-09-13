@@ -39,12 +39,23 @@ public class SigninActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 getInput();
-
-                if(checkLogin(cursor, str_username, str_password)) {
+                if(str_username.isEmpty() || str_password.isEmpty() ) {
+                    if(str_username.isEmpty()) {
+                        Toast.makeText(SigninActivity.this, "Bạn chưa nhập tên đăng nhập", Toast.LENGTH_SHORT).show();
+                    }
+                    if(str_password.isEmpty()) {
+                        Toast.makeText(SigninActivity.this, "Bạn chưa nhập mật khẩu", Toast.LENGTH_SHORT).show();
+                    }
+                } else if(checkLogin(cursor, str_username, str_password)) {
                     Toast.makeText(SigninActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                     gotoProfile();
                 } else {
-                    Toast.makeText(SigninActivity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+                    if(checkLoginUser(cursor, str_username) == false) {
+                        Toast.makeText(SigninActivity.this, "Tên đăng nhập không tồn tại", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(SigninActivity.this, "Sai mật khẩu", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
         });
@@ -71,12 +82,31 @@ public class SigninActivity extends AppCompatActivity {
     }
     public boolean checkLogin(Cursor cursor, String username, String password) {
         while(cursor.moveToNext()) {
-            if(username.equalsIgnoreCase(cursor.getString(2).toString().trim()) && password.equalsIgnoreCase(cursor.getString(2).toString().trim())) {
+            if(username.equalsIgnoreCase(cursor.getString(2).toString().trim()) && password.equalsIgnoreCase(cursor.getString(3).toString().trim())) {
                 return true;
             }
         }
         return false;
     }
+
+    public boolean checkLoginUser(Cursor cursor, String username) {
+        while(cursor.moveToNext()) {
+            if(username.equalsIgnoreCase(cursor.getString(2).toString().trim())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkLoginPassword(Cursor cursor, String username, String password) {
+        while(cursor.moveToNext()) {
+            if(username.equalsIgnoreCase(cursor.getString(2).toString().trim()) && password.equalsIgnoreCase(cursor.getString(3).toString().trim())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
     public void gotoProfile() {

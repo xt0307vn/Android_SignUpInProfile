@@ -69,10 +69,5 @@ public class DatabaseUsers extends SQLiteOpenHelper {
         cv.put(COLUMN_EMAIL, email);
 
         long result = db.insert(TABLE_NAME, null, cv);
-        if (result == -1) {
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, "Add successed", Toast.LENGTH_SHORT).show();
-        }
     }
 }
